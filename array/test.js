@@ -29,7 +29,7 @@
 
 // console.log(retrieveArr([[[[1]]], 2, [[3]], [4]]))
 
-let items = [5, 3, 7, 6, 2, 9]
+let items = [12, 5, 787, 1, 23]
 
 function swap(items, leftIndex, rightIndex) {
   let temp = items[leftIndex]
@@ -81,4 +81,45 @@ function quickSort(items, left, right) {
 
 let result = quickSort(items, 0, items.length - 1)
 console.log(result)
-//
+// function swap(arr, leftIndex, rightIndex) {
+//   let temp = arr[leftIndex]
+//   arr[leftIndex] = arr[rightIndex]
+//   arr[rightIndex] = temp
+// }
+
+// function partition(arr, l, r) {
+//   let pivot = arr[Math.floor((r + l) / 2)]
+//   i = l
+//   j = r
+
+//   while (i <= j) {
+//     while (arr[i] < pivot) {
+//       i++
+//     }
+//     while (arr[j] > pivot) {
+//       j--
+//     }
+//     while (i <= j) {
+//       swap(arr, i, j)
+//       i++
+//       j--
+//     }
+//   }
+//   return i
+// }
+
+// function quickSort(arr, l, r) {
+//   let index
+//   if (arr.length > 1) {
+//     index = partition(arr, l, r)
+//     if (l < index - 1) {
+//       quickSort(arr, l, index - 1)
+//     }
+//     if (r > index) {
+//       quickSort(arr, index, r)
+//     }
+//   }
+//   return arr
+// }
+
+// console.log(quickSort([12, 5, 787, 1, 23], 0, 4))
