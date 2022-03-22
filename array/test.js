@@ -123,3 +123,5 @@ function quickSort(arr, l, r) {
 }
 
 console.log(quickSort([12, 5, 787, 1, 23], 0, 4))
+
+//Heap sort
