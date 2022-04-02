@@ -5,7 +5,7 @@ function power(x, y) {
     //   return multiple
     // } else {
     //   multiple = multiple * x
-    //   return powe(x, --y);
+    //   return powe(x, --y);q
     // }
     if (y > 0) {
       multiple = multiple * x
