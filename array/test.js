@@ -1,69 +1,75 @@
-class Sollution {
+class Solution {
   constructor() {
-    this.arr = []
+    this.heap = []
   }
 
-  parent(index) {
+  parentIndex(index) {
     return Math.floor((index - 1) / 2)
   }
 
-  leftChildren(index) {
+  leftChildIndex(index) {
     return 2 * index + 1
   }
-  rightChildren(index) {
+
+  rightChildIndex(index) {
     return 2 * index + 2
   }
 
-  heapSort(arr) {
-    let heap = []
-
-    for (let i = 0; i < arr.length; i++) {
-      this.insert(arr[i])
-    }
-    for (let i = 0; i < arr.length; i++) {
-      heap.push(this.delet())
-    }
-    return this.arr
+  swap(a, b) {
+    let temp = this.heap[a]
+    this.heap[a] = this.heap[b]
+    this.heap[b] = temp
   }
+
   insert(item) {
-    this.arr.push(item)
-    let index = this.arr.length - 1
-    let parnt = this.parent(index)
-    while (this.arr[parnt] && this.arr[parnt] < this.arr[index]) {
-      this.swap(parnt, index)
-      index = this.parent(index)
-      parnt = this.parent(index)
+    this.heap.push(item)
+    var index = this.heap.length - 1
+    var parent = this.parentIndex(index)
+    while (this.heap[parent] && this.heap[parent] < this.heap[index]) {
+      this.swap(parent, index)
+      index = this.parentIndex(index)
+      parent = this.parentIndex(index)
     }
   }
 
-  delet() {
-    let item = this.arr.shift()
-    this.arr.unshift(this.arr.pop)
-    let index = 0
-    let leftChild = this.leftChildren(index)
-    let rightChild = this.rightChildren(index)
+  delete() {
+    var item = this.heap.shift()
+    this.heap.unshift(this.heap.pop())
+    var index = 0
+    var leftChild = this.leftChildIndex(index)
+    var rightChild = this.rightChildIndex(index)
     while (
-      (this.arr[leftChild] && this.arr[leftChild] > this.arr[index]) ||
-      this.arr[rightChild] > this.arr[index]
+      (this.heap[leftChild] && this.heap[leftChild] > this.heap[index]) ||
+      this.heap[rightChild] > this.heap[index]
     ) {
-      let max = leftChild
-      if (this.arr[rightChild] && this.arr[rightChild] > this.arr[index]) {
+      var max = leftChild
+      if (this.heap[rightChild] && this.heap[rightChild] > this.heap[max]) {
         max = rightChild
       }
-      this.swap(index, max)
+      this.swap(max, index)
       index = max
-      leftChild = this.leftChildren(index)
-      rightChild = this.rightChildren(index)
+      leftChild = this.leftChildIndex(max)
+      rightChild = this.rightChildIndex(max)
     }
     return item
   }
-
-  swap(left, right) {
-    let temp = this.arr[left]
-    this.arr[left] = this.arr[right]
-    this.arr[right] = temp
-  }
 }
 
-let sort = new Sollution()
-console.log(sort.heapSort([12, 5, 787, 1, 23]))
+function heapSort(arr) {
+  var sorted = []
+  var heap1 = new Solution()
+
+  for (let i = 0; i < arr.length; i++) {
+    heap1.insert(arr[i])
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    sorted.push(heap1.delete())
+  }
+  return sorted
+}
+
+let arr = [1, 6, 2, 3, 7, 3, 4, 6, 9]
+arr = heapSort(arr)
+
+console.log(arr)
