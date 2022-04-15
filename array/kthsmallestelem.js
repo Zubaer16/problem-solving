@@ -81,45 +81,45 @@
 
 // let result = quickSort(items, 0, items.length - 1)
 // console.log(result)
-function swap(arr, leftIndex, rightIndex) {
-  let temp = arr[leftIndex]
-  arr[leftIndex] = arr[rightIndex]
-  arr[rightIndex] = temp
-}
+class Solution {
+  partition(arr, l, r) {
+    let pivot = arr[Math.floor((r + l) / 2)]
+    let i = l
+    let j = r
 
-function partition(arr, l, r) {
-  let pivot = arr[Math.floor((r + l) / 2)]
-  i = l
-  j = r
-
-  while (i <= j) {
-    while (arr[i] < pivot) {
-      i++
+    while (i <= j) {
+      while (arr[i] < pivot) {
+        i++
+      }
+      while (arr[j] > pivot) {
+        j--
+      }
+      if (i <= j) {
+        this.swap(arr, i, j)
+        i++
+        j--
+      }
     }
-    while (arr[j] > pivot) {
-      j--
-    }
-    if (i <= j) {
-      swap(arr, i, j)
-      i++
-      j--
-    }
+    return i
   }
-  return i
-}
-
-function quickSort(arr, l, r) {
-  let index
-  if (arr.length > 1) {
-    index = partition(arr, l, r)
-    if (l < index - 1) {
-      quickSort(arr, l, index - 1)
-    }
-    if (r > index) {
-      quickSort(arr, index, r)
-    }
+  swap(arr, leftIndex, rightIndex) {
+    let temp = arr[leftIndex]
+    arr[leftIndex] = arr[rightIndex]
+    arr[rightIndex] = temp
   }
-  return arr
+  kthSmallest(arr, l, r, k) {
+    let index
+    if (arr.length > 1) {
+      index = this.partition(arr, l, r)
+      if (l < index - 1) {
+        this.kthSmallest(arr, l, index - 1, k)
+      }
+      if (r > index) {
+        this.kthSmallest(arr, index, r, k)
+      }
+    }
+    return arr[k - 1]
+  }
 }
 
 console.log(quickSort([12, 5, 787, 1, 23], 0, 4))
