@@ -10,28 +10,45 @@ class Solution {
     if (value === 0) {
       return -1
     }
+    if (value >= n - 1) {
+      return 1
+    }
     for (let i = 0; i < n; i++) {
+      let max = -Infinity
+      for (let j = index + 1; j <= index + value; j++) {
+        if (max < arr[j]) {
+          max = arr[j]
+          // console.log('max' + max)
+        }
+      }
+      ++count
+      value = max
       index = index + value
-      count++
-      value = arr[index]
-      let newValue = 0
+      // console.log('index :' + index)
+      // console.log('value: ' + value)
       if (value === 0) {
         return -1
       }
-      if (index >= n - 1) {
+      if (index > n - 1) {
+        return ++count
+      }
+      if (index === n - 1) {
         return count
-      } else {
-        for (let i = index + 1; i <= index + value; i++) {
-          let max = -Infinity
-          if (arr[i] > max) {
-            max = arr[i]
-            value = max
-          }
-        }
       }
     }
   }
 }
 
 const jumps = new Solution()
-console.log(jumps.minJumps([2, 3, 1, 1, 2, 4, 2, 0, 1, 1], 10))
+
+// console.log(jumps.minJumps([2, 3, 1, 1, 2, 4, 2, 0, 1, 1], 10))
+// console.log(jumps.minJumps([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9], 11))
+console.log(
+  jumps.minJumps(
+    [
+      70, 21, 46, 25, 54, 76, 92, 84, 47, 57, 46, 31, 38, 31, 75, 40, 61, 21,
+      84, 51, 86, 41,
+    ],
+    22
+  )
+)
