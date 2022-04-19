@@ -49,4 +49,4 @@ console.log(jumps.minJumps([2, 3, 1, 1, 2, 4, 2, 0, 1, 1], 10))
 //     ],
 //     22
 //   )
-// )//
+// )// We will do this again tomorrow , In sha Allah
