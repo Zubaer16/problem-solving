@@ -1,52 +1,62 @@
+// class Solution {
+//   minJumps(arr, n) {
+//     if (n === 1) {
+//       return 0
+//     }
+//     var jumps = Array.from({ length: n }, (_, i) => 0)
+//     var min
+
+//     jumps[n - 1] = 0
+
+//     for (var i = n - 2; i >= 0; i--) {
+//       if (arr[i] == 0) jumps[i] = Number.MAX_VALUE
+//       else if (arr[i] >= n - i - 1) jumps[i] = 1
+//       else {
+//         min = Number.MAX_VALUE
+
+//         for (var j = i + 1; j < n && j <= arr[i] + i; j++) {
+//           if (min > jumps[j]) min = jumps[j]
+//         }
+
+//         if (min != Number.MAX_VALUE) jumps[i] = min + 1
+//         else jumps[i] = min
+//       }
+//     }
+
+//     if (jumps[0] === Number.MAX_VALUE) {
+//       return -1
+//     }
+//     return jumps[0]
+//   }
+// }
+
 class Solution {
   minJumps(arr, n) {
-    //code here
-    let value = arr[0]
-    let index = 0
-    let count = 0
+    let maxR = arr[0]
+    let step = arr[0]
+    let jump = 1
     if (n === 1) {
       return 0
-    }
-    if (value === 0) {
+    } else if (arr[0] === 0) {
       return -1
-    }
-    if (value >= n - 1) {
-      return 1
-    }
-    for (let i = 0; i < n; i++) {
-      let max = -Infinity
-      for (let j = index; j < index + value; j++) {
-        console.log('j = ' + j)
-        if (max < arr[j]) {
-          max = arr[j]
-          // console.log('max' + max)
+    } else {
+      for (let i = 1; i < n; i++) {
+        if (i === n - 1) {
+          return jump
         }
-      }
-      ++count
-      value = max
-      index = index + value
-      console.log('index :' + index)
-      console.log('value: ' + value)
-      if (value === 0) {
-        return -1
-      }
-      if (index >= n - 1) {
-        return count
+        maxR = Math.max(maxR, i + arr[i])
+        step--
+        if (step == 0) {
+          jump++
+          if (i >= maxR) {
+            return -1
+          }
+          step = maxR - i
+        }
       }
     }
   }
 }
 
-const jumps = new Solution()
-
-console.log(jumps.minJumps([2, 3, 1, 1, 2, 4, 2, 0, 1, 1], 10))
-// console.log(jumps.minJumps([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9], 11))
-// console.log(
-//   jumps.minJumps(
-//     [
-//       70, 21, 46, 25, 54, 76, 92, 84, 47, 57, 46, 31, 38, 31, 75, 40, 61, 21,
-//       84, 51, 86, 41,
-//     ],
-//     22
-//   )
-// )// We will do this again tomorrow , In sha Allah
+const minJum = new Solution()
+console.log(minJum.minJumps([0, 1, 1, 1, 1], 5))
