@@ -1,25 +1,32 @@
 var merge = function (intervals) {
-  let result = []
-  let last
-  intervals.forEach((element) => {
-    if (!last || element[0] > last[1]) {
-      result.push((last = element))
+  if (intervals.length < 2) return intervals
+
+  intervals.sort((a, b) => a[0] - b[0])
+
+  const result = []
+  let previous = intervals[0]
+
+  for (let i = 1; i < intervals.length; i++) {
+    if (previous[1] >= intervals[i][0]) {
+      previous = [previous[0], Math.max(previous[1], intervals[i][1])]
+      console.log(previous)
     } else {
-      if (element[1] > last[1]) {
-        last[1] = element[1]
-      }
-      if (element[0] < last[0]) {
-        last[0] = element[0]
-      }
+      result.push(previous)
+      previous = intervals[i]
+      console.log(previous)
     }
-  })
+  }
+
+  result.push(previous)
+
   return result
 }
 
 console.log(
   merge([
-    [1, 4],
-    [0, 5],
+    [1, 3],
+    [2, 6],
+    [8, 10],
+    [15, 18],
   ])
 )
-// //
