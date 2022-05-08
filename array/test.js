@@ -1,32 +1,32 @@
-var merge = function (intervals) {
-  if (intervals.length < 2) return intervals
-
-  intervals.sort((a, b) => a[0] - b[0])
-
-  const result = []
-  let previous = intervals[0]
-
-  for (let i = 1; i < intervals.length; i++) {
-    if (previous[1] >= intervals[i][0]) {
-      previous = [previous[0], Math.max(previous[1], intervals[i][1])]
-      console.log(previous)
-    } else {
-      result.push(previous)
-      previous = intervals[i]
-      console.log(previous)
+let nextPermutation = function (nums) {
+  let max = -Infinity
+  let min = Infinity
+  let minIndex
+  let maxIndex
+  for (let i = 0; i < nums.length; i++) {
+    if (max < nums[i]) {
+      max = nums[i]
+      maxIndex = i
     }
   }
-
-  result.push(previous)
-
-  return result
+  for (let i = 0; i < nums.length; i++) {
+    if (min > nums[i]) {
+      min = nums[i]
+      minIndex = i
+    }
+  }
+  if (index === nums.length - 1) {
+    swap(nums, nums.length - 2, nums.length - 1)
+  } else if (index === nums.length - 2) {
+    swap(nums)
+  }
+  return nums
 }
 
-console.log(
-  merge([
-    [1, 3],
-    [2, 6],
-    [8, 10],
-    [15, 18],
-  ])
-)
+let swap = function (nums, left, right) {
+  let temp = nums[left]
+  nums[left] = nums[right]
+  nums[right] = temp
+}
+
+console.log(nextPermutation([3, 2, 1]))
