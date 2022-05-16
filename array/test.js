@@ -1,29 +1,17 @@
-class Solution {
-  // Function to count inversions in the array.
-  inversionCount(arr, N) {
-    //your code here
-    let low = 0
-    let high = 1
-    let count = 0
+// merge sort algorithm
 
-    while (high <= N) {
-      if (arr[low] > arr[high]) {
-        this.swap(arr, low++, high)
-        count++
-      } else {
-        high++
-      }
-    }
-    return count
+function merge(arr) {
+  if (arr.length < 2) {
+    return arr
   }
+  let middle = Math.floor(arr.length / 2)
+  let half_1 = arr.slice(0, middle)
+  let half_2 = arr.slice(middle, arr.length)
 
-  swap(arr, first, last) {
-    let temp = arr[first]
-    arr[first] = arr[last]
-    arr[last] = temp
-  }
+  const ami = merge(half_1)
+  console.log(ami)
+  const tumi = merge(half_2)
+  console.log(tumi)
 }
 
-let inversion = new Solution()
-console.log(inversion.inversionCount([2, 3, 4, 5, 6], 5))
-console.log(inversion.inversionCount([2, 3, 4, 5, 6], 5))
+console.log(merge([2, 3, 4, 5, 6]))
