@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in page</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="heading">
+            <p>Change log in method</p>
+        </div>
+        <div class="empty"></div>
+        <div class="icon-container">
+            <i class="fa-solid fa-unlock fa-3x"></i>
+        </div>
+        <div class="name-container">
+            Danske ID
+            <hr>
+        </div>
+
+        <div class="form-container">
+            <form action="#">
+                <div class="user-container">
+                    <div class="show-user">12345666</div>
+                    <label id="userlebel" for="user">User ID</label><br>
+                    <label class="hide-password" for="password">Password</label>
+                    <input class="usercenter" type="number" name="user" id="user" maxlength="8"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                </div>
+                <input class="passwordcenter" type="number" name="password" id="password" maxlength="4"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+
+            </form>
+            <a href="#" class="avisible"><button>
+                    Submit
+                </button></a>
+        </div>
+
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
