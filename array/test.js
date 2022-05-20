@@ -14,4 +14,4 @@ function merge(arr) {
   const tumi = merge(half_2)
 }
 
-console.log(merge([2, 3, 4, 5, 6]))
+console.log(merge([2, 3, 4, 5, 6])) //
