@@ -35,7 +35,7 @@ function compare(a, b) {
     count++
   }
 
-  return count
+  return sort
 }
 
 console.log(merge([2, 4, 1, 3, 5]))
