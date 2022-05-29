@@ -1,6 +1,6 @@
 // merge sort algorithm
 
-function merge(arr) {
+/*function merge(arr) {
   if (arr.length < 2) {
     return arr
   }
@@ -38,4 +38,4 @@ function compare(a, b) {
   return sort
 }
 
-console.log(merge([2, 4, 1, 3, 5]))
+console.log(merge([2, 4, 1, 3, 5]))*/
