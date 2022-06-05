@@ -50,9 +50,9 @@ class Solution {
 
   inversionAndcount(arr, l, r) {
     let count = 0
+
     if (l < r) {
       let m = Math.floor((l + r) / 2)
-      console.log(m)
 
       // Total inversion count = left subarray
       // count + right subarray count + merge count
@@ -88,6 +88,7 @@ class Solution {
       j = 0,
       k = l,
       swaps = 0
+
     while (i < left.length && j < right.length) {
       if (left[i] <= right[j]) {
         arr[k++] = left[i++]
@@ -96,6 +97,7 @@ class Solution {
         swaps += m + 1 - (l + i)
       }
     }
+
     while (i < left.length) {
       arr[k++] = left[i++]
     }
