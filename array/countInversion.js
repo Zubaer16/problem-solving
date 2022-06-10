@@ -2,12 +2,17 @@ class Solution {
   // Function to count inversions in the array.
   inversionCount(arr, N) {
     //your code here
-    let solution = this.inversionAndcount(arr, 0, 4)
+    let solution = this.inversionAndcount(arr, 0, N - 1)
     return solution
   }
 
   inversionAndcount(arr, l, r) {
-    console.log(l, r)
+    //console.log(l, r)
+    // let newArr = []
+    // for (let i = l; i < r + 1; i++) {
+    //   newArr.push(arr[i])
+    // }
+    // console.log('Array is ' + newArr)
     let count = 0
     if (l < r) {
       let m = Math.floor((l + r) / 2)
@@ -17,15 +22,15 @@ class Solution {
 
       // Left subarray count
       count += this.inversionAndcount(arr, l, m)
-      console.log('1st count = ' + count)
+      //console.log('1st count = ' + count)
 
       //Right subarray count
       count += this.inversionAndcount(arr, m + 1, r)
-      console.log('2nd count =' + count)
+      //console.log('2nd count =' + count)
 
       // Merge count
       count += this.mergeSortAndCount(arr, l, m, r)
-      console.log('3rd count = ' + count)
+      //console.log('3rd count = ' + count)
     }
     return count
   }
@@ -66,7 +71,7 @@ class Solution {
     while (j < right.length) {
       arr[k++] = right[j++]
     }
-    console.log(l, m, r)
+    //console.log(l, m, r, arr)
     return swaps
   }
 }
