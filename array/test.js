@@ -1,27 +1,25 @@
-// class Solution {
-//   getPairsCount(arr, n, k) {
-//     //code here
-//   }
-// }
+class Solution {
+  commonElements(arr1, arr2, arr3, n1, n2, n3) {
+    let i = 0
+    let j = 0
+    let k = 0
+    let newArr = []
 
-// let s = new Solution()
-// console.log(s.getPairsCount([1, 5, 7, 1], 4, 6))
-
-function getPairsCount(arr, n, k) {
-  var m = new Map()
-  var count = 0
-  for (var i = 0; i < n; i++) {
-    if (m.has(k - arr[i])) {
-      count += m.get(k - arr[i])
+    while (i < n1 && j < n2 && k < n3) {
+      if (arr1[i] === arr2[j] && arr2[j] === arr2[k]) {
+        if (newArr[newArr.length - 1] !== arr1[i]) {
+          newArr.push(arr1[i])
+        }
+        i++
+        j++
+        k++
+      } else if (arr1[i] < arr2[j]) i++
+      else if (arr2[j] < arr3[k]) j++
+      else k++
     }
-    if (m.has(arr[i])) {
-      m.set(arr[i], m.get(arr[i]) + 1)
-    } else {
-      m.set(arr[i], 1)
-    }
+    return newArr
   }
-
-  return count
 }
 
-console.log(getPairsCount([1, 5, 7, 1], 4, 6))
+const s = new Solution()
+console.log(s.commonElements([3, 3, 3], [3, 3, 3], [3, 3, 3], 3, 3, 3))
