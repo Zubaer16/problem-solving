@@ -7,7 +7,7 @@ function reverseArray(arr,start,end){
         start++
         end--
     }
-    return arr
+    return arr //
 }
 
 console.log(reverseArray([5,4,3,2,1],0,4))
