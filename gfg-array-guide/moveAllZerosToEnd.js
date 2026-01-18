@@ -1,3 +1,4 @@
+// one traversal pointer
 function moveAllZerosToEnd(arr) {
   const n = arr.length
   let count = 0
